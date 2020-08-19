@@ -170,6 +170,7 @@ if ($reporttype == 'host') {
 	// Get name to be used in PLACEHOLDER-part of filename
 	$name = $hosts[0]['name'];
 	$reportname=str_replace(" ", "_",$name);
+    $reportname=str_replace("/", "",$reportname);
 	CreatePDF($hosts);
 }
 elseif ($reporttype == 'hostgroup') {
@@ -182,7 +183,7 @@ elseif ($reporttype == 'hostgroup') {
 	//var_dump($hostgroupname);
 	$name = $hostgroupname[0]['name'];
 	$reportname=str_replace(" ", "_",$name);
-	$reportname=str_replace("/", "--",$name);
+	$reportname=str_replace("/", "",$reportname);
 	CreatePDF($hosts);
 }
 else {
