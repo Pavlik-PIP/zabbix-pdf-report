@@ -10,7 +10,7 @@
 // v0.1 - 1/14/12 - (c) Travis Mathis - travisdmathis@gmail.com
 // Change Log: Added Form Selection, Data Gathering, Report Generation w/ basic time period selection
 // pdfform.php(selection) / generatereport.php(report building) / pdf.php(report)i
-// v0.2 - 2/7/12 
+// v0.2 - 2/7/12
 // Change Log: Removed mysql specific calls and replaced with API calls.  Moved config to central file
 // v0.5 - 2014/09/05 - Ronny Pettersen <pettersen.ronny @ gmail.com>
 //	Rewritten a lot based on original from Travis Mathis. Allows reporting on group.
@@ -56,8 +56,8 @@ header( 'Content-type: text/html; charset=utf-8' );
 	<script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/jquery.datetimepicker.js"></script>
 	<script type="text/javascript" src="js/jquery.validate.min.js"></script>
-	<script type="text/javascript" src="js/jquery.tablesorter.min.js"></script> 
-	<script type="text/javascript" src="js/select2.min.js"></script> 
+	<script type="text/javascript" src="js/jquery.tablesorter.min.js"></script>
+	<script type="text/javascript" src="js/select2.min.js"></script>
 	<script>
 		$(function(){
 			$('#ReportHost').click(function(){
@@ -136,9 +136,9 @@ if ($zabbix_version < 5.0 ) {
 ZabbixAPI::login($z_server,$z_user,$z_pass)
 	or die('Unable to login: '.print_r(ZabbixAPI::getLastError(),true));
 //fetch graph data host
-$hosts       = ZabbixAPI::fetch_array('host','get',array('output'=>array('hostid','name'),'sortfield'=>'host','with_graphs'=>'1','sortfield'=>'name'))
+$hosts       = ZabbixAPI::fetch_array('host','get',array('output'=>array('hostid','name'),'sortfield'=>'host','sortfield'=>'name'))
 	or die('Unable to get hosts: '.print_r(ZabbixAPI::getLastError(),true));
-$host_groups = ZabbixAPI::fetch_array('hostgroup','get', array('output'=>array('groupid','name'),'real_hosts'=>'1','with_graphs'=>'1','sortfield'=>'name') )
+$host_groups = ZabbixAPI::fetch_array('hostgroup','get', array('output'=>array('groupid','name'),'real_hosts'=>'1','sortfield'=>'name') )
 	or die('Unable to get hosts: '.print_r(ZabbixAPI::getLastError(),true));
 ZabbixAPI::logout($z_server,$z_user,$z_pass)
 	or die('Unable to logout: '.print_r(ZabbixAPI::getLastError(),true));
